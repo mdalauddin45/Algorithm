@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N =1e5+7;
-int nums[N];
-
+const int N=1e5+7;
+int arr[N];
 void merge(int l,int r,int mid)
 {
     int left_size = mid-l+1;
@@ -11,8 +10,8 @@ void merge(int l,int r,int mid)
     int right_size = r-mid;
     int R[right_size+1];
 
-    for(int i=l,j=0;i<=mid;i++,j++) L[j]=nums[i];
-    for(int i=mid+1,j=0;i<=r;i++,j++) R[j]=nums[i];
+    for(int i=l,j=0;i<=mid;i++,j++) L[j]=arr[i];
+    for(int i=mid+1,j=0;i<=r;i++,j++) R[j]=arr[i];
 
     L[left_size] = INT_MAX;
     R[right_size] = INT_MAX;
@@ -22,14 +21,13 @@ void merge(int l,int r,int mid)
     {
         if(L[lp]<=R[rp])
         {
-            nums[i]=L[lp];
+            arr[i] = L[lp];
             lp++;
         }else{
-           nums[i]=R[rp];
-            rp++; 
+            arr[i]=R[rp];
+            rp++;
         }
     }
-
 }
 void mergeSort(int l,int r)
 {
@@ -43,9 +41,10 @@ int main()
 {
     int n;
     cin>>n;
-    for(int i=0;i<n;i++) cin>>nums[i];
-    //marge sort
+    for(int i=0;i<n;i++) cin>>arr[i];
+    //using marge sort
     mergeSort(0,n-1);
-    for(int i=0;i<n;i++) cout<<nums[i]<<" ";
+    for(int i=n-1;i>=0;i--) cout<<arr[i]<<" ";
+
     return 0;
 }
