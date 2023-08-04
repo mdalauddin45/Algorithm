@@ -26,8 +26,6 @@ int main()
     int m;
     cin>>m;
     for(int i=0;i<m;i++) cin>>arr2[i];
-
-    //merge
     mergeArrays(n,m);
     for(int i=0;i<n+m;i++) cout<<result[i]<<" ";
     return 0;
