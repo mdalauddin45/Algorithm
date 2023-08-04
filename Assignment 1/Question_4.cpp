@@ -35,5 +35,5 @@
 
 // (a) O(nlog n)
 // (b) O(sqrt(n))
-// (c) O(sqrt(n) * log n)
+// (c) O(nlog n)
 // (d) O(sqrt(n))
