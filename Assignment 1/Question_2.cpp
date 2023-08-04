@@ -2,7 +2,7 @@
 using namespace std;
 const int N=1e5+7;
 int arr[N];
-int bSearch(int k,int l,int r)
+int binarySearch(int l,int r,int k)
 {
     while (l<=r)
     {
@@ -21,8 +21,7 @@ int main()
     for(int i=0;i<n;i++) cin>>arr[i];
     int k;
     cin>>k;
-    sort(arr,arr+n);
-    int ans = bSearch(k,0,n-1);
+    int ans = binarySearch(0,n-1,k);
     if(ans==0) cout<<"Not Found";
     else cout<<ans;
     return 0;
