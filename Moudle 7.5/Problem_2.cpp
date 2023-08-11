@@ -6,13 +6,22 @@ bool visited[N];
 int level[N];
 void dfs(int u)
 {
+    queue<int> q;
+    q.push(u);
     visited[u]=true;
-    for(int v:adj[u])
+    level[u]=0;
+    while(!q.empty())
     {
-        if(!visited[v])
+        int v=q.front();
+        q.pop();
+        for(int i=0;i<adj[v].size();i++)
         {
-            level[v]=level[u]+1;
-            dfs(v);
+            if(!visited[adj[v][i]])
+            {
+                q.push(adj[v][i]);
+                visited[adj[v][i]]=true;
+                level[adj[v][i]]=level[v]+1;
+            }
         }
     }
 }
