@@ -1,34 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N=1e3+5;
+const int N=1000;
 vector<int> adj[N];
 bool visited[N];
-void dfs(int u)
+void dfs(int u,int &cnt)
 {
     visited[u]=true;
+    cnt++;
     for(int v:adj[u])
     {
-        if(visited[v]==false) dfs(v);
+       if(visited[v]) continue;
+        dfs(v,cnt);
     }
-    
 }
-// void bfs(int s)
-// {
-//     queue<int>q;
-//     q.push(s);
-//     visited[s]=true;
-//     while(!q.empty())
-//     {
-//         int u=q.front();
-//         q.pop();
-//         for(int v:adj[u])
-//         {
-//             if(visited[v]) continue;
-//             visited[v]=true;
-//             q.push(v);
-//         }
-//     }
-// }
 int main()
 {
     int n,m;
@@ -39,16 +23,17 @@ int main()
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    int cnt=0;
-    for(int i=1;i<=n;i++)
+    vector<int> sizes;
+    for(int i=0;i<N;i++)
     {
-        if(visited[i]==false)
+        if(!visited[i])
         {
-            cnt++;
-            dfs(i);
+            int cnt=0;
+            dfs(i,cnt);
+            if(cnt>1) sizes.push_back(cnt);
         }
-       
     }
-    cout<<cnt<<endl;
+    sort(sizes.begin(),sizes.end());
+    for(int size:sizes) cout<<size<<" ";
     return 0;
 }
