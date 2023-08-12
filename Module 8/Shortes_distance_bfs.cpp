@@ -37,7 +37,7 @@ int main()
     int s,d;
     cin>>s>>d;
     bfs(s);
-    cout<<level[d]<<endl;
+    cout<<level[d]<<endl; //shortest distance from s to d
 
     return 0;
 }
