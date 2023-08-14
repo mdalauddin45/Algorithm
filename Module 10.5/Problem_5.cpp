@@ -65,6 +65,27 @@ int main()
     bfs(si,sj);
 
     if(level[di][dj]==0) cout<<"-1"<<endl;
-    else cout<<level[di][dj]<<endl;
+    else{
+        cout<<level[di][dj]<<endl;
+        vector<pii>path;
+        pii curr={di,dj};
+        while (curr!=make_pair(si,sj))
+        {
+        path.push_back(curr);
+        curr = parent[curr.first][curr.second];
+        }
+        path.push_back({si,sj});
+        reverse(path.begin(),path.end());
+        for(int i=1;i<path.size();i++)
+        {
+        int x = path[i].first-path[i-1].first;
+        int y = path[i].second-path[i-1].second;
+        if(x==1) cout<<"D";
+        else if(x==-1) cout<<"U";
+        else if(y==1) cout<<"R";
+        else if(y==-1) cout<<"L";
+        else cout<<"-1";
+        }
+    }
     return 0;
 }
