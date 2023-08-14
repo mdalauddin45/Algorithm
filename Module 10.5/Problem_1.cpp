@@ -6,11 +6,13 @@ typedef pair<int,int> pii;
 vector<pii> adj[N];
 vector<int> dist(N,INF);
 vector<bool> visited(N);
+int parent[N];
 void dijkstra(int s)
 {
     priority_queue<pii,vector<pii>,greater<pii>> pq;
     dist[s]=0;
     pq.push({dist[s],s});
+    parent[s]=-1;
     while(!pq.empty())
     {
         int u=pq.top().second;
@@ -26,6 +28,7 @@ void dijkstra(int s)
             {
                 dist[v]=dist[u]+w;
                 pq.push({dist[v],v});
+                parent[v]=u;
             }
         }
     }
@@ -45,5 +48,19 @@ int main()
     cin>>s>>d;
     dijkstra(s);
     cout<<dist[d]<<endl;
+    //shortest path from s to d
+    // vector<int> path;
+    // int cur=d;
+    // while (parent[cur]!=-1)
+    // {
+    //     path.push_back(cur);
+    //     cur=parent[cur];
+    // }
+    // path.push_back(s);
+    // reverse(path.begin(),path.end());
+    // for(int i=0;i<path.size();i++)
+    // {
+    //     cout<<path[i]<<" ";
+    // }
     return 0;
 }
