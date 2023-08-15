@@ -46,8 +46,7 @@ int main()
     {
 
         cout<<"Distance of "<<i<<": "<<dis[i]<<" "<<endl;
-    }
-    
+    }  
     return 0;
 }
 
