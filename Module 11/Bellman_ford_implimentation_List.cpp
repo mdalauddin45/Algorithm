@@ -14,19 +14,17 @@ void bellman_ford(int s)
         dis[i]=inf;
     }
     dis[s]=0;
-    for(int i=1;i<=n;i++)
+    for(int i=1;i<n;i++)
     {
-        //all edges relaxtion
-        for(int j=1;j<=n;j++)
+        for(auto e:list_of_edges)
         {
-            for(pii vpair:g[j])
+            int u=e.first.first;
+            int v=e.first.second;
+            int w=e.second;
+            // dis[v]=min(dis[v],dis[u]+w);
+            if(dis[u]+w<dis[v])
             {
-                int v=vpair.first;
-                int w=vpair.second;
-                if(dis[j]!=inf && dis[v]>dis[j]+w)
-                {
-                    dis[v]=dis[j]+w;
-                }
+                dis[v]=dis[u]+w;
             }
         }
     }
@@ -39,13 +37,14 @@ int main()
     {
         int u,v,w;
         cin>>u>>v>>w;
-        g[u].push_back({v,w});
+        // g[u].push_back({v,w});
+        list_of_edges.push_back({{u,v},w});
     }
     bellman_ford(1);
     for(int i=1;i<=n;i++)
     {
 
-        cout<<"Distance of "<<i<<": "<<dis[i]<<" "<<endl;
+        cout<<"List of "<<i<<": "<<dis[i]<<" "<<endl;
     }
     
     return 0;
