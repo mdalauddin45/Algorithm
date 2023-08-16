@@ -37,7 +37,7 @@ int main()
     {
         int u,v,w;
         cin>>u>>v>>w;
-        // g[u].push_back({v,w});
+        // g[u].push_back({v,w}); 
         list_of_edges.push_back({{u,v},w});
     }
     bellman_ford(1);  //complexity O(n*m)
