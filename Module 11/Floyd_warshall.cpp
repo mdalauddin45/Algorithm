@@ -8,7 +8,7 @@ int main()
     {
         int u,v,w;
         cin>>u>>v>>w;
-        d[u][v]=w;
+        // d[u][v]=w;
         // d[v][u]=w;
     }
     
