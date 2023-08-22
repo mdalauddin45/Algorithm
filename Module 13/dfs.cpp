@@ -12,7 +12,6 @@ void dfs(int s)
     int child = vac[s][i];
     if(vis[child]==false)
     {
-        vis[child]=true;
         dfs(child);
     }
    }
