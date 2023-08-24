@@ -2,7 +2,6 @@
 using namespace std;
 const int N=1e3+5;
 const int INF=1e9+10;
-
 typedef pair<int,int> pii;
 vector<pii> adj[N];
 vector<int> dist(N,INF);
@@ -44,13 +43,15 @@ int main()
     }
     int s,t;
     cin>>s>>t;
+    dijkstra(s);
     while (t--)
     {
-        int d,c;
-        cin>>d>>c;
-        dijkstra(s);
-        if(dist[d]<=c) cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        int d,w;
+        cin>>d>>w;
+        if(dist[d]<=w && dist[d]!=INF)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
     }
     
     return 0;
