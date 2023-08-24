@@ -3,9 +3,9 @@ using namespace std;
 const int N=1e3+5;
 const int INF=1e9+10;
 typedef pair<int,int> pii;
-vector<pii> adj[N];
-vector<int> dist(N,INF);
-vector<bool> visited(N);
+vector<vector<pii>>adj;
+vector<int> dist;
+vector<bool> visited;
 void dijkstra(int s)
 {
     priority_queue<pii,vector<pii>,greater<pii>>pq;
@@ -13,21 +13,22 @@ void dijkstra(int s)
     pq.push({dist[s],s});
     while(!pq.empty())
     {
-        int u=pq.top().second;
+        int x=pq.top().second;
+        int y=pq.top().first;
         pq.pop();
-        
-        visited[u]=true;
-        for(pii vpair:adj[u])
+        if(visited[x]) continue;
+        visited[x]=true;
+        for(auto u:adj[x])
         {
-            int v = vpair.first;
-            int w = vpair.second;
-            if(visited[v]) continue;
-            if(dist[v]>dist[u]+w)
+            int v=u.first;
+            int w=u.second;
+            if(dist[v]>dist[x]+w)
             {
-                dist[v]=dist[u]+w;
+                dist[v]=dist[x]+w;
                 pq.push({dist[v],v});
             }
         }
+
     }
 }
 int main()
@@ -39,7 +40,6 @@ int main()
         int u,v,w;
         cin>>u>>v>>w;
         adj[u].push_back({v,w});
-        adj[v].push_back({u,w});
     }
     int s,t;
     cin>>s>>t;
