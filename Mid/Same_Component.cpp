@@ -8,21 +8,28 @@ vector<pii> path={{1,0},{-1,0},{0,1},{0,-1}};
 int n,m;
 bool isValid(int x,int y)
 {
-   if(x>=0 && y>=0 && x<n && y<m ) return true;
-   else return false;
+  return(x>=0 && y>=0 && x<n && y<m);
 }
-void bfs(int si,int sj)
+void bfs(char arr[][N],int si,int sj)
 {
-    vis[si][sj]=true;
-    dis[si][sj]=0;
-    queue<pii> q;
+    queue<pii>q;
     q.push({si,sj});
-    for(int i=0;i<n;i++)
+    vis[si][sj]=true;
+    while (!q.empty())
     {
-        for(int j=0;j<m;j++){
-            vis[i][j]=false;
-            dis[i][j]=INT_MAX;
-
+        pii u=q.front();
+        q.pop();
+        int x=u.first;
+        int y=u.second;
+        for(auto v:path)
+        {
+            int nx=x+v.first;
+            int ny=y+v.second;
+            if(isValid(nx,ny) && !vis[nx][ny] && arr[nx][ny] !='-')
+            {
+                q.push({nx,ny});
+                vis[nx][ny]=true;
+            }
         }
     }
     
@@ -30,7 +37,7 @@ void bfs(int si,int sj)
 int main()
 {
     cin>>n>>m;
-    char arr[n][m];
+    char arr[N][N];
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<m;j++)
@@ -38,23 +45,10 @@ int main()
     }
     int si,sj,di,dj;
     cin>>si>>sj>>di>>dj;
-    bfs(si,sj);
-    bool found=false;
-    for(auto cell:path)
-    {
-        int new_x=si+cell.first;
-        int new_y=sj+cell.second;
-        if(isValid(new_x,new_y) && !vis[new_x][new_y] && arr[new_x][new_y]!='-')
-        {
-            bfs(new_x,new_y);
-            if(vis[di][dj])
-            {
-                found=true;
-                break;
-            }
-        }
-    }
-    if(found) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+    bfs(arr, si, sj);
+    if(vis[di][dj])
+        cout<<"YES"<<endl;
+    else
+        cout<<"NO"<<endl;
     return 0;
 }
