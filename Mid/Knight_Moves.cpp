@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define pii pair<int,int>
-const int N=8;
+const int N=105;
 vector<pii> direc={{1,2},{2,1},{-1,2},{-2,1},{1,-2},{2,-1},{-1,-2},{-2,-1}};
 int dist[N][N];
 bool isValid(int i,int j,int n,int m)
