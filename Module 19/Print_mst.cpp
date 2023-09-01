@@ -35,14 +35,20 @@ void prims(int s)
         if(vis[b]) continue;
         vis[b]=true;
         edgeList.push_back(parent);
-        for(int i=0;i<v[b].size();i++)
+         for(int i=0;i<v[b].size();i++)
         {
-            pii child =v[v][i];
-            
+            pii child =v[b][i];
+            if(!vis[child.first])
+            {
+                pq.push(Edge(b,child.first,child.second));
+            }
         }
     }
-    
-    
+    edgeList.erase(edgeList.begin());
+    for(Edge val: edgeList)
+    {
+        cout<<val.a<<" "<<val.b<<" "<<val.w<<endl;
+    }
 }
 int main()
 {
