@@ -1,56 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-const int N=1e3+5;
-const int INF=1e9+10;
-typedef pair<int,int> pii;
-vector<pii> adj[N];
-vector<int> dist(N,INF);
-vector<bool> visited(N);
-void dijkstra(int s)
+const long long INF = 1e18;
+const int N = 105;
+long long dist[N][N];
+int n,m;
+void dist_initialization()
 {
-    priority_queue<pii,vector<pii>,greater<pii>>pq;
-    dist[s]=0;
-    pq.push({dist[s],s});
-    while(!pq.empty())
-    {
-        int u=pq.top().second;
-        pq.pop();
-        
-        visited[u]=true;
-        for(pii vpair:adj[u])
-        {
-            int v = vpair.first;
-            int w = vpair.second;
-            if(visited[v]) continue;
-            if(dist[v]>dist[u]+w)
-            {
-                dist[v]=dist[u]+w;
-                pq.push({dist[v],v});
-            }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(i==j) dist[i][j]=0;
+            else dist[i][j]=INF;
         }
     }
 }
-int main()
-{
-    int n,m;
+int main() {
     cin>>n>>m;
-    for(int i=0;i<m;i++)
+    dist_initialization();
+    while (m--)
     {
-        int u,v,w;
-        cin>>u>>v>>w;
-        adj[u].push_back({v,w});
-        adj[v].push_back({u,w}); // for undirected graph
+       int a,b,w;
+       cin>>a>>b>>w;
+       if (dist[a][b] > (long long)w)  dist[a][b] = (long long)w;
+    }
+    for(int i=1;i<=n;i++) dist[i][i]=0;
+
+    for(int k=1;k<=n;k++){
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j]);
+            }
+        }
     }
     int q;
     cin>>q;
     while (q--)
     {
-        int s,d;
-        cin>>s>>d;
-         dijkstra(s);
-        if (dist[d] == INF) cout << -1 << endl;
-        else cout << dist[d] << endl;
+        int x,y;
+        cin>>x>>y;
+        if(dist[x][y]==INF) cout<<-1<<endl;
+        else cout<<dist[x][y]<<endl;
     }
-    
+
     return 0;
 }
