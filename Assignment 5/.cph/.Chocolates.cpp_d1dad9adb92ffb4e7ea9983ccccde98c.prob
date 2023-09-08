@@ -1,1 +1,0 @@
-{"name":"Local: Chocolates","url":"e:\\Phitron\\Introduction To Algorithm\\Assignment 5\\Chocolates.cpp","tests":[{"id":1694111325321,"input":"3\n5\n1 2 3 4 5\n4\n2 3 4 5\n5\n1 2 3 8 12","output":"NO\nYES\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Phitron\\Introduction To Algorithm\\Assignment 5\\Chocolates.cpp","group":"local","local":true}

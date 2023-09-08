@@ -9,11 +9,13 @@ int main()
         int n,m;
         cin>>n>>m;
         int arr[n];
+        int s=1000-m;
         for(int i=0;i<n;i++) cin>>arr[i];
-        bool dp[n+1][m+1];
-        dp[0][0]=true;
+        bool dp[n+1][s+1];
+        dp[0][0] = true;
+        for(int i=1;i<=s;i++) dp[0][i] = false;
         for(int i=1;i<=n;i++){
-            for(int j=0;j<=m;j++){
+            for(int j=0;j<=s;j++){
                 if(arr[i-1]<=j){
                     dp[i][j]=dp[i-1][j-arr[i-1]] || dp[i-1][j];
                 }else{
@@ -21,7 +23,7 @@ int main()
                 }
             }
         }
-        if(dp[n][m]) cout<<"YES"<<endl;
+        if(dp[n][s]) cout<<"YES"<<endl;
         else cout<<"NO"<<endl;
     }
     
