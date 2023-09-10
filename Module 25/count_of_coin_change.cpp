@@ -23,3 +23,4 @@ int main()
     cout<<dp[n][ss]<<endl;
     return 0;
 }
+//maximum coin for unbounded

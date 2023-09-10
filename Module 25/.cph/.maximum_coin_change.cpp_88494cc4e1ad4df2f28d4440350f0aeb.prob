@@ -1,0 +1,1 @@
+{"name":"Local: maximum_coin_change","url":"e:\\Phitron\\Introduction To Algorithm\\Module 25\\maximum_coin_change.cpp","tests":[{"id":1694321846982,"input":"3\n1 2 3\n5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Phitron\\Introduction To Algorithm\\Module 25\\maximum_coin_change.cpp","group":"local","local":true}
