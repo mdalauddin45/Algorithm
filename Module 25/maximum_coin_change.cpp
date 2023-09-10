@@ -9,7 +9,7 @@ int main() {
     int ss;
     cin >> ss;
     int dp[n + 1][ss + 1];
-    for(int i = 0; i <= n; i++)  dp[i][0] = 0;
+    for(int i = 0; i <= n; i++)  dp[0][0] = 0;
     for(int i = 1; i <= ss; i++) dp[0][i] = INT_MIN;
 
     for(int i = 1; i <= n; i++) {
@@ -25,9 +25,9 @@ int main() {
     }
 
     if (dp[n][ss] == INT_MIN) {
-        cout << "Not possible to make the sum." << endl;
+        cout<<"Not possible to make the sum."<<endl;
     } else {
-        cout << dp[n][ss] << " coins needed." << endl;
+        cout<<dp[n][ss]<<endl;
     }
 
     return 0;
