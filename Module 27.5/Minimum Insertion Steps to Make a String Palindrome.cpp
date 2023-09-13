@@ -21,8 +21,8 @@ int minInsertions(string s) {
         }
     }
     int lcs_length = dp[n][m];
-    int del = m-lcs_length;
-    return del;
+    int inser = m-lcs_length;
+    return inser;
 }
 int main()
 {
