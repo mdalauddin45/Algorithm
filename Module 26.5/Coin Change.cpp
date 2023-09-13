@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
  long long int count(int coins[], int N, int sum){
-        int dp[N+1][sum+1];
+        long long int dp[N+1][sum+1];
         dp[0][0] = 1;
         for (int i = 1; i <= sum; i++) dp[0][i] = 0;
         for (int i = 1; i <= N; i++) {
@@ -18,9 +18,9 @@ using namespace std;
     }
 int main()
 {
-    int n,s;
+    long long n,s;
     cin>>n>>s;
-    int w[n];
+    long long w[n];
     for(int i=0;i<n;i++) cin>>w[i];
     cout <<count(w,n,s) << endl;
     return 0;
