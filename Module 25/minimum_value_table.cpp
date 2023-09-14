@@ -29,13 +29,10 @@ int main()
             }
         }
     }
-    for (int i = 0; i <= n; i++)
-    {
-        for (int j = 0; j <= s; j++)
-        {
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
+    if (dp[n][s] == INT_MAX) {
+        cout<<"Not possible to make the sum."<<endl;
+    } else {
+        cout<<dp[n][s]<<endl;
     }
     return 0;
 }
