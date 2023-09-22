@@ -1,0 +1,1 @@
+{"name":"Local: water_anot","url":"e:\\Phitron\\Introduction To Algorithm\\contest\\water_anot.cpp","tests":[{"id":1695388070258,"input":"2\n9\n1 8 3 4 5 7 6 5 2\n5\n5 2 1 6 3","output":"1 5\n0 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Phitron\\Introduction To Algorithm\\contest\\water_anot.cpp","group":"local","local":true}
