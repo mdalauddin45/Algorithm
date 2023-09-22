@@ -1,18 +1,16 @@
 #include <bits/stdc++.h>
+#define ll long long int
 using namespace std;
 const int N = 100001;
 int parent[N];
 int parentLevel[N];
+
 class Edge {
 public:
-    int a, b, w;
-    Edge(int a, int b, int w) {
-        this->a = a;
-        this->b = b;
-        this->w = w;
-    }
+    ll a, b, w;
+    Edge(int a, int b, int w) : a(a), b(b), w(w) {}
 };
-bool cmp(Edge a, Edge b) {
+bool cmp(const Edge& a, const Edge& b) {
     return a.w < b.w;
 }
 void dsu_set(int n) {
@@ -22,8 +20,7 @@ void dsu_set(int n) {
     }
 }
 int dsu_find(int node) {
-    if (parent[node] == -1) return node;
-    return parent[node] = dsu_find(parent[node]);
+    return (parent[node] == -1) ? node : parent[node] = dsu_find(parent[node]);
 }
 void dsu_union(int a, int b) {
     int leaderA = dsu_find(a);
@@ -39,36 +36,36 @@ void dsu_union(int a, int b) {
     }
 }
 int main() {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
     vector<Edge> edges;
     dsu_set(n);
+
     for (int i = 0; i < m; i++) {
-        int a,b,w;
-        cin>>a>>b>>w;
-        edges.push_back(Edge(a,b,w));
+        ll a, b, w;
+        cin >> a >> b >> w;
+        edges.emplace_back(a, b, w);
     }
     sort(edges.begin(), edges.end(), cmp);
     int removedEdges = 0;
-    long long total_const_cost = 0;
-    
-    for (Edge edge : edges) {
+    ll total_const_cost = 0;
+    for (const Edge& edge : edges) {
         int a = edge.a;
         int b = edge.b;
         int w = edge.w;
-        
+
         int leaderA = dsu_find(a);
         int leaderB = dsu_find(b);
-        
+
         if (leaderA != leaderB) {
             dsu_union(a, b);
-            total_const_cost += w;
+          total_const_cost += w;
         } else {
             removedEdges++;
         }
     }
-    if(removedEdges >=n-1) cout<<removedEdges<<" "<<total_const_cost<<endl;
-    else cout<<"Not Possible"<<endl;
-    
+    if (removedEdges >= n - 1) cout << removedEdges << " " << total_const_cost << endl;
+    else cout << "Not Possible" << endl;
+
     return 0;
 }
