@@ -1,0 +1,1 @@
+{"name":"Local: Blood Bottle","url":"e:\\Phitron\\Introduction To Algorithm\\contest\\Blood Bottle.cpp","tests":[{"id":1695389684438,"input":"5\n0110111\n0101010101\n1010101000\n0000\n111111","output":"3\n3\n2\n0\n6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Phitron\\Introduction To Algorithm\\contest\\Blood Bottle.cpp","group":"local","local":true}
