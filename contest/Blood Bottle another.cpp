@@ -1,38 +1,36 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
+int calculateBottlesZazaDrinks(const string s) {
+    int zcnt = 0;
+    int ccnt = 0;
+    char curr = s[0];
+
+    for (char c : s) {
+        if (c == curr) {
+            ccnt++;
+        } else {
+            if (curr == '1') {
+                zcnt += ccnt;
+            }
+            ccnt = 1;
+            curr = c;
+        }
+    }
+    if (curr == '1') {
+        zcnt += ccnt;
+    }
+    return zcnt;
+}
 
 int main() {
-    int T;
-    cin >> T;
-
-    while (T--) {
+    int t;
+    cin >> t;
+    while (t--)
+    {
         string S;
         cin >> S;
-
-        int ZazaCount = 0;
-        int KazaCount = 0;
-        int i = 0;
-        int n = S.size();
-
-        while (i < n) {
-            char currentType = S[i];
-            int consecutiveCount = 0;
-
-            while (i < n && S[i] == currentType) {
-                consecutiveCount++;
-                i++;
-            }
-
-            if (currentType == '1') {
-                ZazaCount += consecutiveCount;
-            } else {
-                KazaCount += consecutiveCount;
-            }
-        }
-
-        cout << ZazaCount << endl;
+        int result = calculateBottlesZazaDrinks(S);
+        cout << result << endl;
     }
-
     return 0;
 }
